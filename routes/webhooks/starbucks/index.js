@@ -2,6 +2,7 @@
 
 const { Router } = require('express');
 
+const comlink = require('../../../comlinks/fusionbot');
 const debug = require('../debug').extend('starbucks');
 
 module.exports = Router()
@@ -14,4 +15,6 @@ module.exports = Router()
   .post('/', (req, res) => {
     debug('Post to starbucks');
     res.send('Success');
+
+    comlink.emit('webhook');
   });

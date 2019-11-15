@@ -2,6 +2,8 @@
 
 const debug = require('debug')('fusionbot');
 
+const comlink = require('../../comlinks/fusionbot');
+
 const whisper = debug.extend('whisper');
 
 const name = 'fusionbot';
@@ -21,8 +23,12 @@ module.exports = function FusionBotFactory() {
       whisper(`text "${message.text}"`);
       reply(`I'm sorry, I don't handle private conversations quite yet.`);
     },
-    onStart() {
+    onStart(reply) {
       debug(`${name} is restarting.`);
+
+      comlink.on('webhook', (data) => {
+        reply('Just received a webhook');
+      });
     },
   };
   this.triggers = {
