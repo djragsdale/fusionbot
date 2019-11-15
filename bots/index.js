@@ -1,5 +1,6 @@
 'use strict';
 
+const debug = require('debug')('bots');
 const SimpleSlackbot = require('simple-slackbot');
 
 const FusionBotConfig = require('./fusionbot');
@@ -26,6 +27,7 @@ function SlackBotManager(cfg) {
       fusionBotConfig.triggers || {},
     );
     fusionBot.run();
+    debug('Running fusionBot');
   };
 
   return this;

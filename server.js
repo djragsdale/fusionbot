@@ -10,7 +10,7 @@ const express = require('express');
 const SlackBotManager = require('./bots');
 
 // Import Routes and Route Factories
-// const routes = require('./routes/index');
+const routes = require('./routes/index');
 
 // Storage
 
@@ -49,11 +49,7 @@ app.use(cors());
 //   verify: rawBodySaver,
 //   type: () => true,
 // })); // Try to parse the body as raw
-// app.use('/', routes);
-app.use('/', (req, res) => {
-  debug('Routes are not currently handled');
-  res.send('Routes are not currently handled');
-});
+app.use('/', routes);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
