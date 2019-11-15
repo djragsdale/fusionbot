@@ -29,7 +29,12 @@ module.exports = function FusionBotFactory() {
       comlink.on('starbucks', ({ body, rawBody }) => {
         debug('Received starbucks comlink');
         debug(rawBody);
-        debug(JSON.stringify(body, null, 2));
+        try {
+          debug(JSON.stringify(body, null, 2));
+        } catch (err) {
+          debug('Error with body');
+          debug(body);
+        }
         reply(rawBody);
       });
     },
