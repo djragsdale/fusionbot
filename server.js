@@ -1,7 +1,7 @@
 'use strict';
 
 const debug = require('debug')('server');
-// const bodyParser = require('body-parser');
+const bodyParser = require('body-parser');
 // const cookieParser = require('cookie-parser');
 const cors = require('cors');
 const express = require('express');
@@ -34,23 +34,22 @@ app.use((req, res, next) => {
 });
 app.use(cors());
 
-// app.use(bodyParser.json());
-
-// app.use(bodyParser.urlencoded({
-//  extended: true
-// })); // support encoded bodies
+app.use(express.json()); // for parsing application/json
+app.use(express.urlencoded({
+  extended: true,
+})); // support encoded bodies
 // app.use(cookieParser());
 
-// // Required for Alexa
-// const rawBodySaver = (req, res, buf, encoding) => {
-//   if (buf && buf.length) {
-//     req.rawBody = buf.toString(encoding || 'utf8');
-//   }
-// };
-// app.use(bodyParser.raw({
-//   verify: rawBodySaver,
-//   type: () => true,
-// })); // Try to parse the body as raw
+// Required for Alexa
+const rawBodySaver = (req, res, buf, encoding) => {
+  if (buf && buf.length) {
+    req.rawBody = buf.toString(encoding || 'utf8');
+  }
+};
+app.use(bodyParser.raw({
+  verify: rawBodySaver,
+  type: () => true,
+})); // Try to parse the body as raw
 app.use('/', routes);
 
 // catch 404 and forward to error handler
