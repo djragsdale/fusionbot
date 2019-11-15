@@ -47,7 +47,7 @@ const server = http.createServer(app);
 /**
  * Listen on provided port, on all network interfaces.
  */
-debug(`Listening on port ${port}`);
+debug(`Attempting to listen on port ${port}`);
 server.listen(port);
 /**
  * Event listener for HTTP server "error" event.

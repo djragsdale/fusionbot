@@ -16,7 +16,7 @@ const SlackBotManager = require('./bots');
 
 
 // Initialize Slack bots
-const slackCfgKeys = Object.keys(process.env).filter((key) => key.substring(0, 6) === 'slack_');
+const slackCfgKeys = Object.keys(process.env).filter((key) => key.substring(0, 6) === 'SLACK_');
 const slackCfg = {};
 slackCfgKeys.forEach((key) => {
   slackCfg[key] = process.env[key];

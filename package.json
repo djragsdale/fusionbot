@@ -17,7 +17,7 @@
   "homepage": "https://github.com/djragsdale/fusionbot#readme",
   "main": "server.js",
   "scripts": {
-    "develop": "nodemon --exec \"env-cmd .env npm start\"",
+    "develop": "nodemon --exec \"env-cmd npm start\"",
     "lint": "eslint .",
     "start": "node www.js",
     "test": "echo \"Error: no test specified\" && exit 1"

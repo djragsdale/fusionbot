@@ -20,7 +20,7 @@ function SlackBotManager(cfg) {
     const fusionBotConfig = new FusionBotConfig();
     const fusionBot = new SimpleSlackbot(
       fusionBotConfig.name,
-      config.slack_FusionBotToken,
+      config.SLACK_FUSIONBOTTOKEN,
       fusionBotConfig.emoji,
       fusionBotConfig.hooks || {},
       fusionBotConfig.triggers || {},
