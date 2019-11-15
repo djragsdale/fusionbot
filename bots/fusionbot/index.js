@@ -26,8 +26,11 @@ module.exports = function FusionBotFactory() {
     onStart(reply) {
       debug(`${name} is restarting.`);
 
-      comlink.on('webhook', (data) => {
-        reply('Just received a webhook');
+      comlink.on('starbucks', ({ body, rawBody }) => {
+        debug('Received starbucks comlink');
+        debug(rawBody);
+        debug(JSON.stringify(body, null, 2));
+        reply(rawBody);
       });
     },
   };

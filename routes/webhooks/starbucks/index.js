@@ -18,5 +18,10 @@ module.exports = Router()
     debug(req.rawBody);
     res.send('Success');
 
-    comlink.emit('webhook');
+    if (req.rawBody) {
+      comlink.emit('starbucks', ({
+        rawBody: req.rawBody,
+        body: req.body,
+      }));
+    }
   });
