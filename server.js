@@ -7,8 +7,6 @@ const cors = require('cors');
 const express = require('express');
 // const path = require('path');
 
-const SlackBotManager = require('./bots');
-
 // Import Routes and Route Factories
 const routes = require('./routes/index');
 
@@ -16,13 +14,17 @@ const routes = require('./routes/index');
 
 
 // Initialize Slack bots
-const slackCfgKeys = Object.keys(process.env).filter((key) => key.substring(0, 6) === 'SLACK_');
-const slackCfg = {};
-slackCfgKeys.forEach((key) => {
-  slackCfg[key] = process.env[key];
-});
-const slackbots = new SlackBotManager(slackCfg);
-slackbots.run();
+if (process.env.SLACKBOTS_DISABLED !== 'true') {
+  // eslint-disable-next-line global-require
+  const SlackBotManager = require('./bots');
+  const slackCfgKeys = Object.keys(process.env).filter((key) => key.substring(0, 6) === 'SLACK_');
+  const slackCfg = {};
+  slackCfgKeys.forEach((key) => {
+    slackCfg[key] = process.env[key];
+  });
+  const slackbots = new SlackBotManager(slackCfg);
+  slackbots.run();
+}
 
 const app = express();
 
