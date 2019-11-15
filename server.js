@@ -50,6 +50,10 @@ app.use(cors());
 //   type: () => true,
 // })); // Try to parse the body as raw
 // app.use('/', routes);
+app.use('/', (req, res) => {
+  debug('Routes are not currently handled');
+  res.send('Routes are not currently handled');
+});
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
