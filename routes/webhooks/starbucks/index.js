@@ -5,9 +5,11 @@ const { Router } = require('express');
 const debug = require('../debug').extend('starbucks');
 
 module.exports = Router()
-  .get('/', (req, res) => {
+  .get('/', () => {
     debug('Incoming get starbucks webhook');
-    res.status(418).send('Nope');
+    const error = new Error('Nope');
+    error.status = 418;
+    throw error;
   })
   .post('/', (req, res) => {
     debug('Post to starbucks');

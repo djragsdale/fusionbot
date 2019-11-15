@@ -81,7 +81,7 @@ app.use((err, req, res, next) => {
   debug(err.message);
   res
     .status(err.status || 500)
-    .send(err.status);
+    .sendStatus(err.status);
 });
 
 
