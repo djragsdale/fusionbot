@@ -40,7 +40,7 @@ module.exports = function FusionBotFactory() {
           debug('Error with body');
           // debug(body);
         }
-        reply('Testing starbucks');
+        reply('Starbucks machine update!');
       });
     },
   };
