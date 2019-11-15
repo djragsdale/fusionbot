@@ -26,16 +26,21 @@ module.exports = function FusionBotFactory() {
     onStart(reply) {
       debug(`${name} is restarting.`);
 
-      comlink.on('starbucks', ({ body, rawBody }) => {
+      comlink.on('starbucks', ({ body = {}, rawBody = '' }) => {
         debug('Received starbucks comlink');
-        debug(rawBody);
+        try {
+          debug(rawBody);
+        } catch (err) {
+          debug('Error with rawBody');
+          debug(JSON.stringify(rawBody));
+        }
         try {
           debug(JSON.stringify(body, null, 2));
         } catch (err) {
           debug('Error with body');
           debug(body);
         }
-        reply(rawBody);
+        reply('Testing starbucks');
       });
     },
   };
