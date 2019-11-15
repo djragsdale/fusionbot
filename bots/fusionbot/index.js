@@ -32,13 +32,13 @@ module.exports = function FusionBotFactory() {
           debug(rawBody);
         } catch (err) {
           debug('Error with rawBody');
-          debug(JSON.stringify(rawBody));
+          // debug(JSON.stringify(rawBody));
         }
         try {
           debug(JSON.stringify(body, null, 2));
         } catch (err) {
           debug('Error with body');
-          debug(body);
+          // debug(body);
         }
         reply('Testing starbucks');
       });

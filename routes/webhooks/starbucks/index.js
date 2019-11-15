@@ -14,8 +14,6 @@ module.exports = Router()
   })
   .post('/', (req, res) => {
     debug('Post to starbucks');
-    debug(req.body);
-    debug(req.rawBody);
     res.send('Success');
 
     if (req.rawBody) {
