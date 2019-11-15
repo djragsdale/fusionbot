@@ -16,10 +16,13 @@ module.exports = Router()
     debug('Post to starbucks');
     res.send('Success');
 
-    if (req.rawBody && req.rawBody.contains('SUBJECT<<><<')) {
+    if (req.rawBody && req.rawBody.includes('SUBJECT<<><<')) {
       // const [subject, body] = req.rawBody.pa
       comlink.emit('starbucks', ({
         rawBody: req.rawBody,
       }));
+    } else {
+      debug('rawBody error');
+      debug(typeof req.rawBody);
     }
   });
