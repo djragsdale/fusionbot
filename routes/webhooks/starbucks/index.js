@@ -14,6 +14,7 @@ module.exports = Router()
   })
   .post('/', (req, res) => {
     debug('Post to starbucks');
+    debug(req.body);
     res.send('Success');
 
     comlink.emit('webhook');
