@@ -15,17 +15,24 @@
     "url": "https://github.com/djragsdale/fusionbot/issues"
   },
   "homepage": "https://github.com/djragsdale/fusionbot#readme",
-  "main": "www.js",
+  "main": "server.js",
   "scripts": {
+    "develop": "nodemon --exec \"env-cmd .env npm start\"",
+    "lint": "eslint .",
+    "start": "node www.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
+    "cors": "^2.8.5",
     "debug": "^4.1.1",
     "express": "^4.17.1",
     "simple-slackbot": "^1.0.2"
   },
   "devDependencies": {
     "env-cmd": "^10.0.1",
+    "eslint": "^6.6.0",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-import": "^2.18.2",
     "nodemon": "^1.19.4"
   }
 }
